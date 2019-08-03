@@ -1,5 +1,6 @@
 const validator = require('./validator');
 const fileParser = require('./fileParser');
+const versionParser = require('./versionParser');
 
 const parse = async (path) => {
   const {
@@ -24,7 +25,18 @@ const parse = async (path) => {
     };
   }
 
-  console.log('VERSION', version);
+  const {
+    error: versionParseError,
+    version: parsedVersion,
+  } = versionParser.parse(version);
+
+  if (versionParseError) {
+    return {
+      error: versionParseError,
+    };
+  }
+
+  console.log('VERSION', parsedVersion);
   return {
     error: undefined,
   };
