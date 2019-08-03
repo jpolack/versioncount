@@ -11,6 +11,7 @@ const parse = async (path) => {
   if (validationError) {
     return {
       error: validationError,
+      version: {},
     };
   }
 
@@ -22,6 +23,7 @@ const parse = async (path) => {
   if (parseError) {
     return {
       error: parseError,
+      version: {},
     };
   }
 
@@ -36,9 +38,9 @@ const parse = async (path) => {
     };
   }
 
-  console.log('VERSION', parsedVersion);
   return {
     error: undefined,
+    version: parsedVersion,
   };
 };
 
