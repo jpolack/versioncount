@@ -41,4 +41,8 @@ describe('fileParser', () => {
     expect(error).toBe('No version found');
     expect(version).toBeUndefined();
   });
+
+  it('throws an error extension is unknown', async () => {
+    expect(() => parse('./someFile', { ext: '.abc' })).toThrow('Unknown File extension: .abc');
+  });
 });
